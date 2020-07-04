@@ -1,0 +1,67 @@
+{
+  "name": "vue-ssr",
+  "version": "1.0.0",
+  "description": "Vue ssr for websites",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "serve": "cross-env NODE_ENV=development npm run build && cross-env NODE_ENV=development npm-run-all -p start serve:client",
+    "serve:client": "vue-cli-service serve",
+    "build": "npm run build:server -- --silent && npm run build:client -- --no-clean --silent",
+    "build:client": "vue-cli-service build",
+    "build:server": "cross-env WEBPACK_TARGET=node vue-cli-service build",
+    "start": "nodemon server",
+    "lint": "vue-cli-service lint"
+  },
+  "author": "Kristjan Suursoho",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^9.8.4",
+    "express": "^4.17.1",
+    "express-http-to-https": "^1.1.4",
+    "http-proxy-middleware": "^1.0.4",
+    "postcss-autoreset": "^2.0.2",
+    "postcss-remove-unused-css": "^1.0.4",
+    "vue": "^2.6.11",
+    "vue-router": "^3.3.4",
+    "vue-server-renderer": "^2.6.11"
+  },
+  "devDependencies": {
+    "@babel/helper-plugin-utils": "^7.10.4",
+    "@vue/cli-plugin-babel": "^4.4.6",
+    "@vue/cli-plugin-eslint": "^4.4.6",
+    "@vue/cli-service": "^4.4.6",
+    "@vue/eslint-config-standard": "^5.1.2",
+    "babel-eslint": "^10.1.0",
+    "chalk": "^4.1.0",
+    "compression-webpack-plugin": "^4.0.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.4.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-vue": "^6.2.2",
+    "lint-staged": "^10.2.11",
+    "node-sass": "^4.14.1",
+    "npm-run-all": "^4.1.5",
+    "sass-loader": "^9.0.1",
+    "vue-template-compiler": "^2.6.11",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "*.vue": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  }
+}
