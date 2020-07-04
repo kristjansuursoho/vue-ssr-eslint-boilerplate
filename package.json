@@ -7,7 +7,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "serve": "cross-env NODE_ENV=development npm run build && cross-env NODE_ENV=development npm-run-all -p start serve:client",
+    "dev": "cross-env NODE_ENV=development npm run build && cross-env NODE_ENV=development npm-run-all -p start serve:client",
     "serve:client": "vue-cli-service serve",
     "build": "npm run build:server -- --silent && npm run build:client -- --no-clean --silent",
     "build:client": "vue-cli-service build",
@@ -21,7 +21,6 @@
     "autoprefixer": "^9.8.4",
     "express": "^4.17.1",
     "express-http-to-https": "^1.1.4",
-    "http-proxy-middleware": "^1.0.4",
     "postcss-autoreset": "^2.0.2",
     "postcss-remove-unused-css": "^1.0.4",
     "vue": "^2.6.11",

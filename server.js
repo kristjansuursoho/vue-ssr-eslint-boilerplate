@@ -1,13 +1,12 @@
 const fs = require('fs')
 const path = require('path')
 const express = require('express')
-const { createProxyMiddleware } = require('http-proxy-middleware')
 const { createBundleRenderer } = require('vue-server-renderer')
 const { redirectToHTTPS } = require('express-http-to-https')
 const chalk = require('chalk')
 
 const TARGET_PORT = process.env.PORT || 8080
-const IS_DEV = process.env.NODE_ENV === 'development'
+// const IS_DEV = process.env.NODE_ENV === 'development'
 
 const indexTemplatePath = path.resolve(__dirname, './public/index.html')
 const indexTemplate = fs.readFileSync(indexTemplatePath, 'utf-8')
@@ -26,26 +25,6 @@ async function initServer () {
     clientManifest: vueSSRClientManifest,
     runInNewContext: false
   })
-
-  if (IS_DEV) {
-    server.use('/*.js', createProxyMiddleware({
-      target: `http://localhost:${TARGET_PORT}`,
-      changeOrigin: true,
-      pathRewrite: (path) => path.includes('main') ? '/main.js' : path,
-      prependPath: false
-    }))
-
-    server.use('/*hot-update*', createProxyMiddleware({
-      target: `http://localhost:${TARGET_PORT}`,
-      changeOrigin: true
-    }))
-
-    server.use('/sockjs-node', createProxyMiddleware({
-      target: `http://localhost:${TARGET_PORT}`,
-      changeOrigin: true,
-      ws: true
-    }))
-  }
 
   const resources = ['/js', '/img', '/css', '/manifest.json', '/robots.txt', '/favicon.ico']
 

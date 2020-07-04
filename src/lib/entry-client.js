@@ -20,13 +20,7 @@ router.onReady(() => {
       return next()
     }
 
-    Promise.all(activated.map(c => {
-      if (c.asyncData) {
-        return c.asyncData({ route: to })
-      }
-    })).then(() => {
-      next()
-    }).catch(next)
+    next()
   })
 
   app.$mount('#app')
