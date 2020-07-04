@@ -16,8 +16,12 @@ export function createRouter () {
         component: () => import('../components/About.vue')
       },
       {
+        path: '/page-not-found',
+        component: () => import('../components/Fallback.vue')
+      },
+      {
         path: '*',
-        redirect: () => import('../components/Fallback.vue')
+        component: () => import('../components/Fallback.vue')
       }
     ]
   })

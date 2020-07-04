@@ -7,6 +7,7 @@
 - DOM hydration (forced)
 - Three shaking
 - Vue with vue-router
+- HTTP to HTTPS
 
 ## Usage
 

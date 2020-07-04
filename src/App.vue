@@ -18,14 +18,6 @@ export default {
     text-align: center;
     color: #2c3e50;
     margin-top: 60px;
-    display: flex;
-
-    div {
-      border: gray 1px solid;
-    }
-
-    .bold { font-weight: bold }
   }
 
-  .boldw { font-weight: bold }
 </style>

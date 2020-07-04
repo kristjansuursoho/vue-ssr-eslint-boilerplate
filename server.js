@@ -6,7 +6,7 @@ const { redirectToHTTPS } = require('express-http-to-https')
 const chalk = require('chalk')
 
 const TARGET_PORT = process.env.PORT || 8080
-// const IS_DEV = process.env.NODE_ENV === 'development'
+const IS_DEV = process.env.NODE_ENV === 'development'
 
 const indexTemplatePath = path.resolve(__dirname, './public/index.html')
 const indexTemplate = fs.readFileSync(indexTemplatePath, 'utf-8')
@@ -53,7 +53,12 @@ async function initServer () {
         chalk.red('ERROR \n', JSON.stringify(error))
       )
 
-      res.status(500).end('500 | Internal Server Error')
+      if (IS_DEV) {
+        res.send({ error })
+      }
+      else {
+        res.status(500).end('500 | Internal Server Error')
+      }
     }
   })
 

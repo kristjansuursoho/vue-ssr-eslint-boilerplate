@@ -1,6 +1,6 @@
 module.exports = {
   plugins: [
-    require('autoprefixer')({ 
+    require('autoprefixer')({
       grid: 'autoplace',
       flexbox: 'no-2009'
     }),
@@ -15,8 +15,8 @@ module.exports = {
       }
     }),
     require('postcss-remove-unused-css')({
-      'path': './src',
-      'exts': ['.vue', '.css', '.scss', '.html']
+      path: './src',
+      exts: ['.vue', '.css', '.scss', '.html']
     })
   ]
 }

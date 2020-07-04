@@ -12,16 +12,3 @@ export default {
   components: { Navbar }
 }
 </script>
-
-<style lang="scss" scoped>
-
-  .route {
-    display: flex;
-    justify-content: center;
-
-    h1 {
-      color: green;
-    }
-  }
-
-</style>
